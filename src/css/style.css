@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root {
+  --color-bomb-light: #333333;
+  --color-bomb-dark: #000000;
+  --color-defuse-light: #66BB6A;
+  --color-defuse-dark: #2e7d32;
+  --color-skip-light: #42A5F5;
+  --color-skip-dark: #1565c0;
+  --color-nope-light: #EF5350;
+  --color-nope-dark: #c62828;
+  --color-points-light: #FFFFFF;
+  --color-points-dark: #e0e0e0;
+
+}
+
+.bomb {
+  color: #f2f2f2;
+  background: linear-gradient(var(--color-bomb-dark), var(--color-bomb-light));
+}
+.bomb img{
+  content:url(../images/bomb.png);
+}
+
+.defuse {
+  background: linear-gradient(var(--color-defuse-dark), var(--color-defuse-light));
+}
+.defuse img{
+  content:url(../images/defuse.png);
+}
+
+.skip-turn {
+  background: linear-gradient(var(--color-skip-dark), var(--color-skip-light));
+}
+.skip-turn img{
+  content:url(../images/skip.png);
+}
+
+.nope {
+  background: linear-gradient(var(--color-nope-dark), var(--color-nope-light));
+}
+.nope img{
+  content:url(../images/nope.png);
+}
+
+.points {
+  background: linear-gradient(var(--color-points-dark), var(--color-points-light));
+}
+.points img{
+  content:url(../images/points.png);
+}
+
+
+body {
+  font-family: 'Pixelify Sans';
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#card {
+  display: flex;
+  border-radius: 10px;
+  height: 410px;
+  width: 290px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    transform: rotate(180deg);
+}
+
+
+.icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 15%;
+}
+
+.cardData {
+  padding-left: 70px; /
+}
+
+#cardBody {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3700b3;
+}
