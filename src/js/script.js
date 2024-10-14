@@ -8,11 +8,11 @@ divCardElement.style.display = 'none';
 let typeCardElements = document.querySelectorAll("h3");
 let valueCardElements = document.querySelectorAll("p");
 
-let warningElement = document.createElement("p");
+let warningElement = document.createElement("h2");
 bodyElement.append(warningElement);
 
 const drawElement = document.createElement("button");
-drawElement.textContent = "Draw card";
+drawElement.textContent = "Play";
 bodyElement.append(drawElement);
 
 const restartElement = document.createElement("button");
@@ -20,12 +20,18 @@ restartElement.textContent = "Restart";
 bodyElement.append(restartElement);
 restartElement.setAttribute("style", "display: none;");
 
+
+
 let deck = [];
 let originalDeck = [];
 
 createShuffledDeck(deck, originalDeck);
 
+// Function when we try to draw a card by clicking the button
 drawElement.addEventListener("click", function () {
+    drawElement.textContent = "Draw card";
+
+
     if (deck.length === 0) {
         divCardElement.style.display = 'none';
 
@@ -41,7 +47,7 @@ drawElement.addEventListener("click", function () {
         divCardElement.style.display = 'flex';
 
         let cardDrawed = deck.shift();
-        let normalizedClass = cardDrawed.type.toLowerCase().replace(/\s+/g, '-');
+        let normalizedClass = cardDrawed.type.toLowerCase().replace(/\s+/g, '-'); // syntax that changes spacing to a '-' (for the skip turn type) and makes letters lowercase
         divCardElement.classList.add(normalizedClass);
 
 
@@ -50,7 +56,7 @@ drawElement.addEventListener("click", function () {
         });
         valueCardElements.forEach((valueCardElement) => {
             if (cardDrawed.value != null) {
-                valueCardElement.textContent = `${cardDrawed.value}`;
+                valueCardElement.textContent = `Value: ${cardDrawed.value}`;
             } else {
                 valueCardElement.textContent = "";
             }
@@ -60,6 +66,7 @@ drawElement.addEventListener("click", function () {
 
 
 });
+
 
 restartElement.addEventListener("click", function () {
     warningElement.textContent = '';
@@ -77,6 +84,8 @@ restartElement.addEventListener("click", function () {
     createShuffledDeck(deck, originalDeck);
 });
 
+
+// adds the cards of the type passed by parameter
 function addCardsToDeck(deck, cardType, numCards, value = null) {
     for (let i = 0; i < numCards; i++) {
         if (cardType === CARD_TYPES.POINTS) {
@@ -86,6 +95,8 @@ function addCardsToDeck(deck, cardType, numCards, value = null) {
     }
 }
 
+
+// Shuffle the cards with the Fisher-Yates algorithm
 function shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -95,6 +106,7 @@ function shuffleDeck(deck) {
     }
 }
 
+// Create the shuffled deck with the 60 cards
 function createShuffledDeck(deck, originalDeck) {
     addCardsToDeck(deck, CARD_TYPES.BOMB, MAX_NUM_CARDS_BOMB);
     addCardsToDeck(deck, CARD_TYPES.DEFUSE, MAX_NUM_CARDS_DEFUSE);
